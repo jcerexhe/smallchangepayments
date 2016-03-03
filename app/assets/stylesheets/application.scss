@@ -1,0 +1,68 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$gray-medium-light: #eaeaea;
+$light-black: #293241;
+$dark-black: #1B1515;
+$bg-green: #00B05D;
+$bg-blue: #00D8D6;
+$transparent: transparent;
+
+.white-text {
+  color: white;
+}
+
+.white-bg {
+  background-color: white;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body, .banner-bg {
+  font-family: 'Source Sans Pro', sans-serif;
+  padding: 0;
+  margin: 0;
+  -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+  background-size: cover;
+  background: -webkit-linear-gradient(left bottom, $bg-green, $bg-blue); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(top right, $bg-green, $bg-blue); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(top right, $bg-green, $bg-blue); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to top right, $bg-green, $bg-blue); /* Standard syntax  */
+  /*background-color: rgba(0,176,93,1);
+  background: @include filter-gradient(#00b05d, #00d8d6, horizontal);
+  background: @include background-image(linear-gradient(left bottom, rgba(0,176,93,1) 0%, rgba(0,216,214,1) 100%));*/
+  background: rgba(0,176,93,1);
+  background: -moz-linear-gradient(45deg, rgba(0,176,93,1) 0%, rgba(56,189,125,1) 22%, rgba(0,216,214,1) 100%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(0,176,93,1)), color-stop(22%, rgba(56,189,125,1)), color-stop(100%, rgba(0,216,214,1)));
+  background: -webkit-linear-gradient(45deg, rgba(0,176,93,1) 0%, rgba(56,189,125,1) 22%, rgba(0,216,214,1) 100%);
+  background: -o-linear-gradient(45deg, rgba(0,176,93,1) 0%, rgba(56,189,125,1) 22%, rgba(0,216,214,1) 100%);
+  background: -ms-linear-gradient(45deg, rgba(0,176,93,1) 0%, rgba(56,189,125,1) 22%, rgba(0,216,214,1) 100%);
+  background: linear-gradient(45deg, rgba(0,176,93,1) 0%, rgba(56,189,125,1) 22%, rgba(0,216,214,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b05d', endColorstr='#00d8d6', GradientType=1 );
+  background-repeat: no-repeat;
+}
+
+.page-heading {
+  color: white;
+  text-align: center;
+  /*font-weight: 100;*/
+  padding-bottom: 20px;
+  padding-top: 40px;
+  letter-spacing: 1px;
+}
+
+.btn-black {
+  @include button-variant($btn-primary-color, $light-black, $dark-black);
+  border: none;
+  border-radius: 3px;
+  /*font-weight: 100;*/
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 14px 30px;
+  letter-spacing: 1px;
+}
