@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :donations :only => [:new :create]
+  resources :donations, only: [:create] do 
+    get 'new', to: 'donations#new'
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
