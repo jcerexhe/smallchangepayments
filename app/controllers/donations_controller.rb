@@ -25,10 +25,15 @@ class DonationsController < ApplicationController
       :currency    => 'aud'
     )
 
-    if charge['paid'] == true
-      show = @conn.post '/donations', { user_id: 1, charity_name: "Greenpeace", charity_id: 1, submission_id: 41, amount: 1000 }
+    payload = '{"donation": {
+      "amount": "1000",
+      "charity_id": "1",
+     "submission_id": "41",
+      "user_id": "1",
+      "charity_name": "Greenpeace"}}'
 
-    end
+    if charge['paid'] == true
+      @conn.post '/donations', payload
 
     rescue Stripe::CardError => e
       flash[:error] = e.message
