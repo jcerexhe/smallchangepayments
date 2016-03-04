@@ -25,10 +25,10 @@ class DonationsController < ApplicationController
       :currency    => 'aud'
     )
 
-    payload = '{"donation":{"amount": "1000","charity_id": "1","submission_id": "41","user_id": "1","charity_name": "Greenpeace"}}'
+    payload = {"donation":{"amount": "1000","charity_id": "1","submission_id": "41","user_id": "1","charity_name": "Greenpeace"}}
 
     if charge['paid'] == true
-      @conn.post ('/donations', payload)
+      @conn.post '/donations', payload
 
     rescue Stripe::CardError => e
       flash[:error] = e.message
