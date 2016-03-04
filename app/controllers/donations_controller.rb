@@ -26,7 +26,9 @@ class DonationsController < ApplicationController
     )
 
     if charge['paid'] == true
-      @conn.post '/donations', { user_id: params[:user_id], charity_name: params[:charity_name], charity_id: params[:charity_id], submission_id: params[:submission_id], amount: params[:amount] }
+      show = @conn.post '/donations', { user_id: params[:user_id], charity_name: params[:charity_name], charity_id: params[:charity_id], submission_id: params[:submission_id], amount: params[:amount] }
+      puts '########################'
+      puts show
     end
 
     rescue Stripe::CardError => e
