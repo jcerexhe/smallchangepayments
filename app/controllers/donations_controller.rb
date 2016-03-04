@@ -29,6 +29,7 @@ class DonationsController < ApplicationController
 
     if charge['paid'] == true
       @conn.post '/donations', payload
+    end
 
     rescue Stripe::CardError => e
       flash[:error] = e.message
