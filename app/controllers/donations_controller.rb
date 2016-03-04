@@ -1,25 +1,42 @@
+require 'json'
+require 'faraday'
+
 class DonationsController < ApplicationController
- 
+
   def new
   end
 
+  def show
+  end
+
   def create
-    @amount = 500
-    
-    customer = Stripe::Customer.create(
-      :email => params[:stripeEmail],
-      :source  => params[:stripeToken]
-    )
+    @conn = Faraday.new(:url => 'http://www.smallchangegiving.co') do |faraday|
+      faraday.request  :url_encoded             # form-encode POST params
+      faraday.response :logger                  # log requests to STDOUT
+      faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+    end
+
+    @user_id = params[:user_id]
 
     charge = Stripe::Charge.create(
-      :customer    => customer.id,
-      :amount      => @amount,
-      :description => 'Rails Stripe customer',
-      :currency    => 'usd'
+      :source    => params[:stripeToken],
+      :amount      => 500,
+      :description => params[:charity_name],
+      :currency    => 'aud'
     )
+
+    if charge['paid'] == true
+      @conn.post '/donations', { user_id: params[:user_id], charity_name: params[:charity_name], amount: params[:amount] }
+    end
 
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to new_charge_path
   end
+  
 end
+
+
+      
+
+    
