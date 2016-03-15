@@ -1,10 +1,10 @@
 <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 ">
-  <%= form_tag donations_path, id: 'payment-form', method: :post do %>
+  <%= form_tag donations_path, id: 'payment-form', method: :post, user_id: params[:user_id], charity_id: params[:charity_id], submission_id: params[:submission_id] do %>
   <span class="payment-errors text-center white-text"></span><br>
 
-  <%= hidden_field_tag :user_id, { :value => params[:user_id] } %>
-  <%= hidden_field_tag :submission_id, { :value => params[:submission_id] } %>
-  <%= hidden_field_tag :charity_id, { :value => params[:charity_id] } %>
+  <%#= hidden_field_tag :user_id, { :value => params[:user_id] } %>
+  <%#= hidden_field_tag :submission_id, { :value => params[:submission_id] } %>
+  <%#= hidden_field_tag :charity_id, { :value => params[:charity_id] } %>
 
   <h1><%= @user_id %></h1>
   <h1><%= @submission_id %></h1>
