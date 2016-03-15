@@ -33,7 +33,7 @@ class DonationsController < ApplicationController
     # payload = {:donation => {:amount => 1000, :charity_id => 1, :submission_id => 98,:user_id => 1,:charity_name => "Greenpeace"}}
 
     if charge['paid'] == true
-      @conn.post '/donations', payload
+      @conn.post "/donations/?amount=#{@amount}?user_id=#{@user_id}?charity_id=#{@charity_id}?submission_id=#{@submission_id}", payload
     end
 
     rescue Stripe::CardError => e
