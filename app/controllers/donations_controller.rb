@@ -32,7 +32,7 @@ class DonationsController < ApplicationController
     )
 
     # Change these to params
-    payload = {:donation => {:amount => @amount, :charity_id => @charity, :submission_id => @submission_id, :user_id => @user_id, :charity_name => params[:charity_name]}}
+    payload = {:donation => {:amount => @amount.to_i, :charity_id => @charity.to_i, :submission_id => @submission_id.to_i, :user_id => @user_id.to_i, :charity_name => params[:charity_name]}}
     # payload = {:donation => {:amount => 1000, :charity_id => 1, :submission_id => 98,:user_id => 1,:charity_name => "Greenpeace"}}
 
     if charge['paid'] == true
