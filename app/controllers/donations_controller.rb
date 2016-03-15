@@ -26,8 +26,10 @@ class DonationsController < ApplicationController
       :currency    => 'aud'
     )
 
+    @charity_id = params[:charity_id]
+
     # Change these to params
-    payload = {:donation => {:amount => params[:amount], :charity_id => params[:charity], :submission_id => params[:submission_id], :user_id => params[:user_id], :charity_name => params[:charity_name]}}
+    payload = {:donation => {:amount => @amount, :charity_id => @charity, :submission_id => @submission_id, :user_id => @user_id, :charity_name => params[:charity_name]}}
     # payload = {:donation => {:amount => 1000, :charity_id => 1, :submission_id => 98,:user_id => 1,:charity_name => "Greenpeace"}}
 
     if charge['paid'] == true
