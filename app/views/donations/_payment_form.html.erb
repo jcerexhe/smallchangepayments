@@ -6,6 +6,10 @@
   <%= hidden_field_tag :submission_id, { :value => params[:submission_id] } %>
   <%= hidden_field_tag :charity_id, { :value => params[:charity_id] } %>
 
+  <h1><%= @user_id %></h1>
+  <h1><%= @submission_id %></h1>
+  <h1><%= @charity_id %></h1>
+
   <div class="form-row form-input">
     <% if params[:amount] %>
       <input type="text" size="20" data-stripe="number", value="<%= params[:amount].to_i/100%>"/>
