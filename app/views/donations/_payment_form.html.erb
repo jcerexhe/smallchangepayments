@@ -2,9 +2,9 @@
   <%= form_tag donations_path, id: 'payment-form', method: :post do %>
   <span class="payment-errors"></span>
 
-  <%= hidden_field_tag :user_id, { params[:user_id] } %>
-  <%= hidden_field_tag :submission_id, { params[:submission_id] } %>
-  <%= hidden_field_tag :charity_id, { params[:charity_id] } %>
+  <%= hidden_field_tag :user_id, { :value => params[:user_id] } %>
+  <%= hidden_field_tag :submission_id, { :value => params[:submission_id] } %>
+  <%= hidden_field_tag :charity_id, { :value => params[:charity_id] } %>
 
   <div class="form-row form-input">
     <% if params[:amount] %>
