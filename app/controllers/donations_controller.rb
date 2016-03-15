@@ -6,6 +6,9 @@ class DonationsController < ApplicationController
   def new
     @user_id = params[:user_id] if params[:user_id]
     @charity_name = params[:charity_name]
+    @submission_id = params[:submission_id]
+    @charity_id = params[:charity_id]
+    @amount = params[:amount] ? params[:amount] * 100 : 300
   end
 
   def create
