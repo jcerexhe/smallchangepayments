@@ -1,0 +1,58 @@
+.navbar {
+  background:transparent;
+  margin-top: 40px;
+}
+
+.navbar-toggle {
+  margin-top: 22px;
+  color: white;
+}
+
+.navbar-static-top .navbar-toggle .icon-bar {
+  background-color: white;
+}
+
+#logo {
+  float: left;
+  /*margin-right: 10px;*/
+  /*font-size: 1.7em;*/
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  /*padding-top: 9px;*/
+  font-weight: 400;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.fa, .navbar-text {
+  letter-spacing: 2px;
+  color: white;
+  font-size: 90%;
+  text-transform: uppercase;
+}
+
+.navbar-text:hover, .navbar-text:focus {
+  letter-spacing: 2px;
+  color: white;
+  font-size: 90%;
+  background-color: transparent;
+  text-transform: uppercase;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+  background-color: transparent;
+}
+
+.fa-nav {
+  margin-top: 18px;
+}
+
+.navbar-text {
+  &:first-child {
+    margin-left: 0;
+    padding-left: 0;
+  }
+}
