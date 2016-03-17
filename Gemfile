@@ -14,6 +14,7 @@ gem 'faraday'
 
 group :development, :test do
   gem 'byebug'
+  gem 'quiet_assets'
 end
 
 group :development do

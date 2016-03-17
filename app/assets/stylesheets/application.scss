@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "navbar";
 
 $gray-medium-light: #eaeaea;
 $light-black: #293241;
@@ -24,8 +25,8 @@ $transparent: transparent;
 }
 
 html, body {
-    margin: 0;
-    height: 100%;
+  margin: 0;
+  min-height: 100%;
 }
 
 body, .banner-bg {
@@ -82,21 +83,38 @@ body, .banner-bg {
 
 }
 
-input {
+#month, #year, #email, #card-number, #amount, #cvc-number {
   font-size: 14px;
-  padding: 18px 20px;
-  border-radius: 3px;
-  border: none;
-  font-weight: 100;
+  padding: 23px 10px;
   letter-spacing: 1px;
-  display: block;
-  width:100%;
-  text-align: center;
-  margin-bottom: 2%;
+  font-weight: 100;
 }
 
+.input-group-addon {
+  background-color: #293241;
+  border-color: #293241;
+}
+
+.fa {
+  color: white;
+}
 
 .heading-text {
   margin-top: 5%;
   margin-bottom: 5%;
+}
+
+.footer-links {
+  padding: 30px 0 56px;
+  border-top: 0.5px solid white;
+}
+
+footer {
+  padding-top: 100px;
+}
+
+.amount {
+  padding-bottom: 20px;
+  font-size: 30px;
+  padding-top: 0;
 }
