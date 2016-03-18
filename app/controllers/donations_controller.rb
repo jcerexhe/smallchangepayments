@@ -12,7 +12,7 @@ class DonationsController < ApplicationController
   end
 
   def create
-    @conn = Faraday.new(:url => 'http://www.smallchangegiving.co') do |faraday|
+    @conn = Faraday.new(:url => 'http://smallchangegiving.co') do |faraday|
       faraday.request  :url_encoded             # form-encode POST params
       faraday.response :logger                  # log requests to STDOUT
       faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
@@ -32,23 +32,26 @@ class DonationsController < ApplicationController
       :currency    => 'aud'
     )
 
-    # Change these to params
     payload = {:donation => {:amount => @amount, :charity_id => @charity_id, :submission_id => @submission_id, :user_id => @user_id, :charity_name => params[:charity_name], :email => params[:email]}}
-    # payload = {:donation => {:amount => 1000, :charity_id => 1, :submission_id => 98,:user_id => 1,:charity_name => "Greenpeace"}}
 
     if charge['paid'] == true
-      @conn.post "/donations", payload
+      response = @conn.post "/donations", payload
+
+      if response.status == 200
+        puts @user_id
+        puts @charity_name
+        puts @submission_id
+        puts @charity_id
+        puts @amount
+        puts @email
+        redirect_to "http://smallchangegiving.co/thanks?amount=" + @amount.to_s + "&charity_id=" + @charity_id.to_s + "&submission_id=" + @submission_id.to_s
+      end
     end
 
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to new_donation_path
-
-    if response.code == 200
-      redirect_to "http://www.smallchangegiving.co/thanks?email=<%= @email %>&amount=<%= @amount %>&charity_id=<%= @charity_id %>&submission_id=<%= @submission_id %>"
-    end
   end
-
 end
 
 
