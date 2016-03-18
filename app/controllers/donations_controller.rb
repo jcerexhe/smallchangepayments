@@ -23,6 +23,7 @@ class DonationsController < ApplicationController
     @submission_id = params[:submission_id]
     @charity_id = params[:charity_id]
     @amount = params[:amount] ? (params[:amount]).to_i * 100 : 300
+    @email = params[:email]
 
     charge = Stripe::Charge.create(
       :source    => params[:stripeToken],
@@ -31,19 +32,26 @@ class DonationsController < ApplicationController
       :currency    => 'aud'
     )
 
-    # Change these to params
-    payload = {:donation => {:amount => @amount, :charity_id => @charity_id, :submission_id => @submission_id, :user_id => @user_id, :charity_name => params[:charity_name]}}
-    # payload = {:donation => {:amount => 1000, :charity_id => 1, :submission_id => 98,:user_id => 1,:charity_name => "Greenpeace"}}
+    payload = {:donation => {:amount => @amount, :charity_id => @charity_id, :submission_id => @submission_id, :user_id => @user_id, :charity_name => params[:charity_name], :email => params[:email]}}
 
     if charge['paid'] == true
-      @conn.post "/donations", payload
+      response = @conn.post "/donations", payload
+
+      if response.status == 200
+        puts @user_id
+        puts @charity_name
+        puts @submission_id
+        puts @charity_id
+        puts @amount
+        puts @email
+        redirect_to "http://www.smallchangegiving.co/thanks?amount=" + @amount.to_s + "&charity_id=" + @charity_id.to_s + "&submission_id=" + @submission_id.to_s
+      end
     end
 
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to new_donation_path
   end
-
 end
 
 
