@@ -12,9 +12,9 @@
     <div class="input-group">
       <div class="input-group-addon"><i class="fa fa-usd"></i></div>
       <% if params[:amount] %>
-        <input type="text" class="form-control custom-input" id="amount" value="<%= params[:amount].to_i/100%>.00" name="amount">
+        <input type="number" class="form-control custom-input" id="amount" value="<%= params[:amount].to_i/100%>.00" name="amount" required>
       <% else %>
-        <input type="text" class="form-control custom-input" id="amount" name="amount" placeholder="Amount (AUD)">
+        <input type="number" class="form-control custom-input" id="amount" name="amount" placeholder="Amount (AUD)" required>
       <% end %>
     </div>
   </div>
@@ -23,7 +23,7 @@
       <label class="sr-only" for="email">Email</label>
       <div class="input-group">
         <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-        <input type="text" class="form-control custom-input" id="email" placeholder="Email" name="email">
+        <input type="email" class="form-control custom-input" id="email" placeholder="Email" name="email" required>
       </div>
     </div>
   <% end %>
@@ -31,7 +31,7 @@
     <label class="sr-only" for="card-number">Credit card number</label>
     <div class="input-group">
       <div class="input-group-addon"><i class="fa fa-credit-card-alt"></i></div>
-      <input type="text" class="form-control custom-input" id="card-number" placeholder="Card Number" data-stripe="number">
+      <input type="number" class="form-control custom-input" id="card-number" placeholder="Card Number" data-stripe="number" required>
     </div>
   </div>
   <div class="row">
@@ -40,9 +40,9 @@
         <label class="sr-only" for="month">Month</label>
         <div class="input-group">
           <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-          <input type="text" class="form-control custom-input" id="month" placeholder="MM" data-stripe="exp-month">
+          <input type="number" class="form-control custom-input" id="month" placeholder="MM" data-stripe="exp-month" required>
           <span class="input-group-addon white-text">/</span>
-          <input type="text" class="form-control custom-input" id="year" placeholder="YYYY" data-stripe="exp-year">
+          <input type="number" class="form-control custom-input" id="year" placeholder="YYYY" data-stripe="exp-year" required>
         </div>
       </div>
     </div>
@@ -51,7 +51,7 @@
         <label class="sr-only" for="cvc-number">CVC Number</label>
         <div class="input-group">
           <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-          <input type="text" class="form-control custom-input" id="cvc-number" placeholder="CVC" data-stripe="cvc">
+          <input type="number" class="form-control custom-input" id="cvc-number" placeholder="CVC" data-stripe="cvc" required>
         </div>
       </div>
     </div>

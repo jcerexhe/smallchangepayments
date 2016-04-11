@@ -22,8 +22,8 @@ class DonationsController < ApplicationController
     @charity_name = params[:charity_name]
     @submission_id = params[:submission_id]
     @charity_id = params[:charity_id]
-    @amount = params[:amount] ? (params[:amount]).to_i * 100 : 300
-    @email = params[:email]
+    @amount = params[:amount] ? (params[:amount]).to_i : 300
+    @email = params[:email] ? params[:email] : nil
 
     charge = Stripe::Charge.create(
       :source    => params[:stripeToken],
@@ -44,7 +44,7 @@ class DonationsController < ApplicationController
         puts @charity_id
         puts @amount
         puts @email
-        redirect_to "http://www.smallchangegiving.co/thanks?amount=" + @amount.to_s + "&charity_id=" + @charity_id.to_s + "&submission_id=" + @submission_id.to_s
+        redirect_to "http://www.smallchangegiving.co/thanks?email=" + @email
       end
     end
 
