@@ -48,6 +48,7 @@ class DonationsController < ApplicationController
           redirect_to "http://www.smallchangegiving.co/thanks?email=" + @email
         else
           redirect_to "http://www.smallchangegiving.co/thanks"
+        end
       end
     end
 
