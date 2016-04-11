@@ -22,7 +22,7 @@ class DonationsController < ApplicationController
     @charity_name = params[:charity_name]
     @submission_id = params[:submission_id]
     @charity_id = params[:charity_id]
-    @amount = params[:amount] ? (params[:amount]).to_i : 300
+    @amount = params[:amount] ? (params[:amount]).to_i * 100 : 300
     @email = params[:email]
 
     charge = Stripe::Charge.create(
