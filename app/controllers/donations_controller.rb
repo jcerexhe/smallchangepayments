@@ -38,12 +38,12 @@ class DonationsController < ApplicationController
       response = @conn.post "/donations", payload
 
       if response.status == 200
-        puts "user_id:" + @user_id if @user_id
-        puts "charity_name:" + @charity_name if @charity_name
-        puts "submission_id:" + @submission_id if @submission_id
-        puts "charity_id:" + @charity_id if @charity_id
-        puts "amount:" + @amount if @amount
-        puts "email:" + @email if @email
+        # puts "user_id:" + @user_id if @user_id
+        # puts "charity_name:" + @charity_name if @charity_name
+        # puts "submission_id:" + @submission_id if @submission_id
+        # puts "charity_id:" + @charity_id if @charity_id
+        # puts "amount:" + @amount.to_s if @amount
+        # puts "email:" + @email if @email
         if params[:email]
           redirect_to "http://www.smallchangegiving.co/thanks?email=" + @email
         else
