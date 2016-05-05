@@ -2,17 +2,25 @@
   <div class='container'>
     <div class='heading-text'>
       <% if @charity_name %>
-        <h2 class='sc-header'>Thanks for supporting <%= @charity_name %>.</h2>
+        <div class="hidden-xs">
+          <h2 class='sc-header'>Thanks for supporting <%= @charity_name %>.</h2>
+        </div>
+        <div class="visible-xs">
+          <h2 class='sc-header-mobile'>Thanks for supporting <%= @charity_name %>.</h2>
+        </div>
       <% else %>
+      <div class="hidden-xs">
         <h2 class="sc-header">Thanks for your support!</h2>
+      </div>
+      <div class="visible-xs">
+        <h2 class="sc-header-mobile">Thanks for your support!</h2>
+      </div>
       <% end %>
     </div>
     <%= render 'payment_form' %>
   </div>
 </div>
-<div class="stripe-image">
-  <img src="https://stripe.com/img/about/logos/badge/styled.png" width="140px">
-</div>
+
 
 
 

@@ -28,6 +28,8 @@ class DonationsController < ApplicationController
     @email = params[:email]
     @charity_category_id = params[:charity_category_id]
 
+    #ADD CUSTOMER DETAILS HERE
+
     charge = Stripe::Charge.create(
       :source    => params[:stripeToken],
       :amount      => @amount,
