@@ -67,7 +67,7 @@
 
 <script type="text/javascript">
   // This identifies your website in the createToken call below
-  Stripe.setPublishableKey('pk_test_Mjb03gv0kQ0aLkjd5Q6rwu7B');
+  Stripe.setPublishableKey(<%= ENV["SCP_STRIPE_PUBLISHABLE_KEY"] %>);
   // ...
 </script>
 

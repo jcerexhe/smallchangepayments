@@ -9,6 +9,7 @@ class DonationsController < ApplicationController
     @submission_id = params[:submission_id]
     @charity_id = params[:charity_id]
     @amount = params[:amount] ? (params[:amount]).to_i * 100 : 300
+    @charity_category_id = params[:charity_category_id]
   end
 
   def create
@@ -24,6 +25,7 @@ class DonationsController < ApplicationController
     @charity_id = params[:charity_id]
     @amount = params[:amount] ? (params[:amount]).to_i * 100 : 300
     @email = params[:email]
+    @charity_category_id = params[:charity_category_id]
 
     charge = Stripe::Charge.create(
       :source    => params[:stripeToken],
@@ -32,7 +34,9 @@ class DonationsController < ApplicationController
       :currency    => 'aud'
     )
 
-    payload = {:donation => {:amount => @amount, :charity_id => @charity_id, :submission_id => @submission_id, :user_id => @user_id, :charity_name => params[:charity_name], :email => params[:email]}}
+    # Change these to params
+    payload = {:donation => {:amount => @amount, :charity_category_id => @charity_category_id, :charity_id => @charity_id, :submission_id => @submission_id, :user_id => @user_id, :charity_name => params[:charity_name]}}
+    # payload = {:donation => {:amount => 1000, :charity_id => 1, :submission_id => 98,:user_id => 1,:charity_name => "Greenpeace"}}
 
     if charge['paid'] == true
       response = @conn.post "/donations", payload
@@ -57,7 +61,3 @@ class DonationsController < ApplicationController
       redirect_to new_donation_path
   end
 end
-
-
-
-
