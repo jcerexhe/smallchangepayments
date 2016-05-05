@@ -68,23 +68,34 @@
 <script type="text/javascript">
   // This identifies your website in the createToken call below
   Stripe.setPublishableKey(<%= ENV["SCP_STRIPE_PUBLISHABLE_KEY"] %>);
-  // ...
-</script>
 
-<script>
-jQuery(function($) {
-  $('#payment-form').submit(function(event) {
-    var $form = $(this);
+  // jQuery(function($) {
+  //   $('#payment-form').submit(function(event) {
+  //     var $form = $(this);
 
-    // Disable the submit button to prevent repeated clicks
-    $form.find('button').prop('disabled', true);
+  //     // Disable the submit button to prevent repeated clicks
+  //     $form.find('button').prop('disabled', true);
 
-    Stripe.card.createToken($form, stripeResponseHandler);
+  //     Stripe.card.createToken($form, stripeResponseHandler);
 
-    // Prevent the form from submitting with the default action
-    return false;
+  //     // Prevent the form from submitting with the default action
+  //     return false;
+  //   });
+  // });
+
+  $(function() {
+    var $form = $('#payment-form');
+    $form.submit(function(event) {
+      // Disable the submit button to prevent repeated clicks:
+      $form.find('button').prop('disabled', true);
+
+      // Request a token from Stripe:
+      Stripe.card.createToken($form, stripeResponseHandler);
+
+      // Prevent the form from being submitted:
+      return false;
+    });
   });
-});
 </script>
 
 <script>
