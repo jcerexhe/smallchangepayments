@@ -1,5 +1,6 @@
 require 'json'
 require 'faraday'
+require 'stripe'
 
 class DonationsController < ApplicationController
 

@@ -1,65 +1,66 @@
-<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 ">
+<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
   <%= form_tag donations_path, id: 'payment-form', method: :post do %>
 
-  <div class="alert alert-danger" role="alert" id="error-msg"><span class="payment-errors"></span></div>
+    <div class="alert alert-danger" role="alert" id="error-msg"><span class="payment-errors"></span></div>
 
-  <%= hidden_field_tag :user_id, params[:user_id] %>
-  <%= hidden_field_tag :submission_id, params[:submission_id] %>
-  <%= hidden_field_tag :charity_id, params[:charity_id] %>
+    <%= hidden_field_tag :user_id, params[:user_id] %>
+    <%= hidden_field_tag :submission_id, params[:submission_id] %>
+    <%= hidden_field_tag :charity_id, params[:charity_id] %>
 
-  <div class="form-group">
-    <label class="sr-only" for="amount">Amount (in dollars)</label>
-    <div class="input-group">
-      <div class="input-group-addon"><i class="fa fa-usd"></i></div>
-      <% if params[:amount] %>
-        <input type="text" class="form-control custom-input" id="amount" value="<%= params[:amount].to_i/100%>.00" name="amount" required>
-      <% else %>
-        <input type="text" class="form-control custom-input" id="amount" name="amount" placeholder="Amount (AUD)" required>
-      <% end %>
-    </div>
-  </div>
-  <% unless params[:user_id] %>
     <div class="form-group">
-      <label class="sr-only" for="email">Email</label>
+      <label class="sr-only" for="amount">Amount (in dollars)</label>
       <div class="input-group">
-        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-        <input type="email" class="form-control custom-input" id="email" placeholder="Email" name="email" required>
+        <div class="input-group-addon"><i class="fa fa-usd"></i></div>
+        <% if params[:amount] %>
+          <input type="text" class="form-control custom-input" id="amount" value="<%= params[:amount].to_i/100%>.00" name="amount" required>
+        <% else %>
+          <input type="text" class="form-control custom-input" id="amount" name="amount" placeholder="Amount (AUD)" required>
+        <% end %>
       </div>
+    </div>
+    <% unless params[:user_id] %>
+      <div class="form-group">
+        <label class="sr-only" for="email">Email</label>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+          <input type="email" class="form-control custom-input" id="email" placeholder="Email" name="email" required>
+        </div>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <label class="sr-only" for="card-number">Credit card number</label>
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-credit-card-alt"></i></div>
+        <input type="text" class="form-control custom-input" id="card-number" placeholder="Card Number" data-stripe="number" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="form-group">
+          <label class="sr-only" for="month">Month</label>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            <input type="text" class="form-control custom-input" id="month" placeholder="MM" data-stripe="exp-month" required>
+            <span class="input-group-addon white-text">/</span>
+            <input type="text" class="form-control custom-input" id="year" placeholder="YYYY" data-stripe="exp-year" required>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="sr-only" for="cvc-number">CVC Number</label>
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+            <input type="text" class="form-control custom-input" id="cvc-number" placeholder="CVC" data-stripe="cvc" required>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pay-button">
+      <button type="submit" class="btn btn-black btn-block">Take Action</button>
     </div>
   <% end %>
-  <div class="form-group">
-    <label class="sr-only" for="card-number">Credit card number</label>
-    <div class="input-group">
-      <div class="input-group-addon"><i class="fa fa-credit-card-alt"></i></div>
-      <input type="text" class="form-control custom-input" id="card-number" placeholder="Card Number" data-stripe="number" required>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-8">
-      <div class="form-group">
-        <label class="sr-only" for="month">Month</label>
-        <div class="input-group">
-          <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-          <input type="text" class="form-control custom-input" id="month" placeholder="MM" data-stripe="exp-month" required>
-          <span class="input-group-addon white-text">/</span>
-          <input type="text" class="form-control custom-input" id="year" placeholder="YYYY" data-stripe="exp-year" required>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="form-group">
-        <label class="sr-only" for="cvc-number">CVC Number</label>
-        <div class="input-group">
-          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-          <input type="text" class="form-control custom-input" id="cvc-number" placeholder="CVC" data-stripe="cvc" required>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="pay-button">
-    <button type="submit" class="btn btn-black btn-block">Take Action</button>
-  </div>
-<% end %>
+</div>
 
 <!-- </form> -->
 
