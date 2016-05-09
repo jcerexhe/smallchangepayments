@@ -42,7 +42,7 @@ class DonationsController < ApplicationController
     charge = Stripe::Charge.create(
       :source    => params[:stripeToken],
       :amount      => @amount,
-      :description => "Charity Name goes here",
+      :description => @charity_name ,
       :currency    => 'aud'
     )
 
