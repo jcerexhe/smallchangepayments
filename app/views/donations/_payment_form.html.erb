@@ -21,12 +21,34 @@
       <% end %>
     </div>
   </div>
+
     <% unless params[:user_id] %>
+      <div class="form-group">
+        <label class="sr-only" for="first_name">First Name</label>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>
+          <input type="first_name" class="form-control custom-input" id="first_name" placeholder="First Name" name="first_name" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="last_name">Last Name</label>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-users" aria-hidden="true"></i></div>
+          <input type="last_name" class="form-control custom-input" id="last_name" placeholder="Last Name" name="last_name" required>
+        </div>
+      </div>
       <div class="form-group">
         <label class="sr-only" for="email">Email</label>
         <div class="input-group">
           <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
           <input type="email" class="form-control custom-input" id="email" placeholder="Email" name="email" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="phone">Mobile</label>
+        <div class="input-group">
+          <div class="input-group-addon">  <i class="fa fa-mobile" aria-hidden="true"></i></div>
+          <input type="phone" class="form-control custom-input" id="phone" placeholder="Mobile" name="phone" required>
         </div>
       </div>
     <% end %>
