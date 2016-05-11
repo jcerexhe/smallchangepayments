@@ -86,12 +86,16 @@
       <div class="form-group">
         <div class="input-group">
           <input type="checkbox" value="true" checked="checked" name="contact_me" id="user_remember_me">
-          <label class="terms-label" for="user_remember_me">I'm happy to find out more I can do in the future.</label>
+          <label class="terms-label" for="user_remember_me">Happy to be contacted <%= "by #{@charity_name}" if @charity_name.present? %> to find out how I can get more involved
+          </label>
         </div>
       </div>
     </div>
     <div class="pay-button">
       <button type="submit" class="btn btn-black btn-block">Take Action</button>
+    </div>
+    <div class="col-xs-12">
+     <p class="terms-and-conditions">By completing the donation you are agreeing to the <a href="http://smallchangegiving.co/terms">terms and conditions</a></p>
     </div>
   </div>
   <% end %>
