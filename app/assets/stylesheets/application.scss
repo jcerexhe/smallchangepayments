@@ -130,7 +130,7 @@ footer {
 }
 
 .stripe-image {
-  margin-top:60px;
+  margin-top:40px;
 }
 
 label.terms-label {
@@ -140,6 +140,7 @@ label.terms-label {
     font-family: Helvetica;
     color:white;
     font-size: 12px;
+    display: inline;
 }
 
 .fa-mobile{
@@ -182,4 +183,18 @@ label.terms-label {
 .fa-lock {
   font-size: 16px;
   padding: 0px 3px 0px 4px;
+}
+
+.terms-and-conditions {
+    margin-top: 20px;
+    font-weight: 100;
+    font-family: Helvetica;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+}
+
+p.terms-and-conditions a {
+  color:white;
+  font-weight:400;
 }
