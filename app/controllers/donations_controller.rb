@@ -37,9 +37,13 @@ class DonationsController < ApplicationController
     @last_name = params[:last_name]
     @phone = params[:phone]
 
-    #ADD CUSTOMER DETAILS HERE
+    customer = Stripe::Customer.create(
+      :email => params[:stripeEmail],
+      :source  => params[:stripeToken]
+    )
 
     charge = Stripe::Charge.create(
+      :customer    => customer.id,
       :source    => params[:stripeToken],
       :amount      => @amount,
       :description => @charity_name,
