@@ -22,6 +22,16 @@ $transparent: transparent;
   text-align: center;
   font-weight: 100;
   letter-spacing: 1px;
+  margin-bottom:40px;
+}
+
+.sc-header-mobile {
+  color: white;
+  text-align: center;
+  font-weight: 100;
+  letter-spacing: 1px;
+  margin-bottom: 50px;
+  font-size: 26px;
 }
 
 html, body {
@@ -67,6 +77,7 @@ body, .banner-bg {
 
 }
 
+
 .btn-black {
   @include button-variant($btn-primary-color, $light-black, $dark-black);
   border: none;
@@ -80,10 +91,9 @@ body, .banner-bg {
 
 .pay-button {
   margin-top: 3%;
-
 }
 
-#month, #year, #email, #card-number, #amount, #cvc-number {
+#month, #year, #email, #card-number, #amount, #cvc-number, #phone, #first_name, #last_name {
   font-size: 14px;
   padding: 23px 10px;
   letter-spacing: 1px;
@@ -120,5 +130,71 @@ footer {
 }
 
 .stripe-image {
-  margin: 3% 1px 1px 80%;
+  margin-top:40px;
+}
+
+label.terms-label {
+    max-width: 100%;
+    margin-left: 5px;
+    font-weight: 100;
+    font-family: Helvetica;
+    color:white;
+    font-size: 12px;
+    display: inline;
+}
+
+.fa-mobile{
+  font-size: 26px;
+  padding-left: 4px;
+  padding-right: 3px;
+}
+
+.fa-envelope {
+  font-size: 13px;
+  padding: 0px 1px 0px 4px;
+}
+
+.fa-usd {
+  font-size: 15px;
+  padding-right: 4px;
+  padding-left: 5px;
+}
+
+.fa-credit-card-alt {
+  font-size: 10px;
+  padding: 0px 3px 0px 4px;
+}
+
+.fa-user {
+  font-size: 15px;
+  padding: 0px 2px 0px 4px;
+}
+
+.fa-users {
+  font-size: 15px;
+  padding: 0px 1x 0px 1px;
+}
+
+.fa-calendar {
+  font-size: 15px;
+  padding: 0px 2px 0px 3px;
+}
+
+.fa-lock {
+  font-size: 16px;
+  padding: 0px 3px 0px 4px;
+}
+
+.terms-and-conditions {
+    margin-top: 20px;
+    font-weight: 100;
+    font-family: Helvetica;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+}
+
+p.terms-and-conditions a {
+  color:white;
+  font-weight:400;
 }

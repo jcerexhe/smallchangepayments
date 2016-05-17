@@ -1,29 +1,55 @@
 <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
   <%= form_tag donations_path, id: 'payment-form', method: :post do %>
 
-    <div class="alert alert-danger" role="alert" id="error-msg"><span class="payment-errors"></span></div>
 
-    <%= hidden_field_tag :user_id, params[:user_id] %>
-    <%= hidden_field_tag :submission_id, params[:submission_id] %>
-    <%= hidden_field_tag :charity_id, params[:charity_id] %>
+  <div class="alert alert-danger" role="alert" id="error-msg"><span class="payment-errors"></span></div>
 
-    <div class="form-group">
-      <label class="sr-only" for="amount">Amount (in dollars)</label>
-      <div class="input-group">
-        <div class="input-group-addon"><i class="fa fa-usd"></i></div>
-        <% if params[:amount] %>
-          <input type="text" class="form-control custom-input" id="amount" value="<%= params[:amount].to_i/100%>.00" name="amount" required>
-        <% else %>
-          <input type="text" class="form-control custom-input" id="amount" name="amount" placeholder="Amount (AUD)" required>
-        <% end %>
-      </div>
+  <%= hidden_field_tag :user_id, params[:user_id] %>
+  <%= hidden_field_tag :submission_id, params[:submission_id] %>
+  <%= hidden_field_tag :charity_id, params[:charity_id] %>
+  <%= hidden_field_tag :charity_category_id, params[:charity_category_id] %>
+  <%= hidden_field_tag :charity_name, params[:charity_name] %>
+
+
+  <div class="form-group">
+    <label class="sr-only" for="amount">Amount (in dollars)</label>
+    <div class="input-group">
+      <div class="input-group-addon"><i class="fa fa-usd"></i></div>
+      <% if params[:amount] %>
+        <input type="text" class="form-control custom-input" id="amount" value="<%= params[:amount].to_i/100%>.00" name="amount">
+      <% else %>
+        <input type="text" class="form-control custom-input" id="amount" name="amount" placeholder="Amount (AUD)" required>
+      <% end %>
     </div>
+  </div>
+
     <% unless params[:user_id] %>
+      <div class="form-group">
+        <label class="sr-only" for="first_name">First Name</label>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>
+          <input type="first_name" class="form-control custom-input" id="first_name" placeholder="First Name" name="first_name" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="last_name">Last Name</label>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-users" aria-hidden="true"></i></div>
+          <input type="last_name" class="form-control custom-input" id="last_name" placeholder="Last Name" name="last_name" required>
+        </div>
+      </div>
       <div class="form-group">
         <label class="sr-only" for="email">Email</label>
         <div class="input-group">
           <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
           <input type="email" class="form-control custom-input" id="email" placeholder="Email" name="email" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="phone">Mobile</label>
+        <div class="input-group">
+          <div class="input-group-addon">  <i class="fa fa-mobile" aria-hidden="true"></i></div>
+          <input type="phone" class="form-control custom-input" id="phone" placeholder="Mobile" name="phone" required>
         </div>
       </div>
     <% end %>
@@ -56,10 +82,31 @@
         </div>
       </div>
     </div>
+    <div class="col-xs-12">
+      <div class="form-group">
+        <div class="input-group">
+          <input type="checkbox" value="true" checked="checked" name="contact_me" id="user_remember_me">
+          <label class="terms-label" for="user_remember_me">Happy to be contacted <%= "by #{@charity_name}" if @charity_name.present? %> to find out how I can get more involved
+          </label>
+        </div>
+      </div>
+    </div>
     <div class="pay-button">
       <button type="submit" class="btn btn-black btn-block">Take Action</button>
     </div>
+    <div class="col-xs-12">
+     <p class="terms-and-conditions">By completing the donation you are agreeing to the <a href="http://smallchangegiving.co/terms">terms and conditions</a></p>
+    </div>
+  </div>
   <% end %>
+</div>
+
+<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+  <div class="stripe-image">
+    <center>
+      <img src="https://res.cloudinary.com/small-change/image/upload/v1462347701/outline_jfxm6l.png" width="100px">
+    </center>
+  </div>
 </div>
 
 <!-- </form> -->
